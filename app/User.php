@@ -29,6 +29,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function project () {
+        return $this->hasOne('App\Project');
+    }
+
     public function setPasswordAttribute($value)
     {
         if($value){
