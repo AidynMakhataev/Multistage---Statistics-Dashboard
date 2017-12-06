@@ -24,6 +24,7 @@
                         @include ('admin.digital-reports.form')
 
                         <actions-overview></actions-overview>
+                        <people-overview></people-overview>
 
                         <div class="form-group">
                             <div class="col-md-offset-4 col-md-4">

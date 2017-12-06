@@ -24,7 +24,7 @@
                   <td><input type="number" class="form-control" v-model="resource.pr_fact"/></td>
                   <td><input type="number" class="form-control" v-model="resource.views_plan"/></td>
                   <td><input type="number" class="form-control" v-model="resource.views_fact"/></td>
-                  <td>{{parseInt(resource.views_fact*0.08)}}</td>
+                  <td>{{parseInt(resource.views_fact)*0.08}}</td>
                   <td>{{Math.round((resource.views_fact / resource.pr_fact) * 1000) / 10}}%</td>
                   <td>{{Math.round(((resource.views_fact * 0.08) / resource.pr_fact) * 1000) / 10}}%</td>
                   <td><input type="number" step="0.01" min="0" class="form-control" v-model="resource.cpv"/></td>
