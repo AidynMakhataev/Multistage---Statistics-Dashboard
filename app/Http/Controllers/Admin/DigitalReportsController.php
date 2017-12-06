@@ -50,11 +50,18 @@ class DigitalReportsController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $requestData = $request->all();
-        dd($requestData);
-        
-        DigitalReport::create($requestData);
+        $country_report = json_decode($request->country_report, true);
+        $actions_overview = json_decode($request->actions_overview, true);
+        $people_overview = json_decode($request->people_overview, true);
+
+        DigitalReport::create([
+            'project_id' => $request->project_id,
+            'start' => $request->start,
+            'end' => $request->end,
+            'actions_overview' => $actions_overview,
+            'people_overview' => $people_overview,
+            'country_report' => $country_report
+        ]);
 
         return redirect('admin/digital-reports')->with('flash_message', 'DigitalReport added!');
     }

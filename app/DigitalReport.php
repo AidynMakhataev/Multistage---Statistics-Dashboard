@@ -9,9 +9,9 @@ class DigitalReport extends Model
     protected $fillable = ['project_id', 'start', 'end', 'actions_overview', 'people_overview', 'country_report'];
 
     protected $casts = [
-        'actions_overview' => 'json',
-        'people_overview' => 'json',
-        'country_report' => 'json'
+        'actions_overview' => 'array',
+        'people_overview' => 'array',
+        'country_report' => 'array'
     ];
 
     protected $dates = ['start', 'end'];

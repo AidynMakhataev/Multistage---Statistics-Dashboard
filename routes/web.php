@@ -18,8 +18,8 @@ Route::group(['middleware' => 'role:admin'], function () {
 Route::view('/', 'dashboard.index')->middleware('role:user');
 
 Route::get('/test', function () {
-   $user = App\User::find(3);
-   return $user->project;
+   $report = App\DigitalReport::find(4);
+   return $report;
 });
 
 

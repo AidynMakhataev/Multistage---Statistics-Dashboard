@@ -18,7 +18,7 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('actions-overview', require('./components/ActionsOverview.vue'));
 Vue.component('people-overview', require('./components/PeopleOverview.vue'));
-
+Vue.component('country-report', require('./components/CountryReport.vue'));
 const app = new Vue({
     el: '#app'
 });

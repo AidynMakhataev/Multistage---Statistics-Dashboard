@@ -25,6 +25,7 @@
 
                         <actions-overview></actions-overview>
                         <people-overview></people-overview>
+                        <country-report></country-report>
 
                         <div class="form-group">
                             <div class="col-md-offset-4 col-md-4">

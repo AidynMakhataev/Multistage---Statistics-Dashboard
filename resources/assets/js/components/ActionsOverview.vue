@@ -70,7 +70,7 @@
         methods: {
             addResource(index, resource) {
                 this.resources.splice(index, 1)
-                this.data.push({name: resource, pr_plan: '', pr_fact: '', views_plan: '', views_fact: '', cpv: '', total_spend: ''})
+                this.data.push({name: resource, pr_plan: '', pr_fact: '', views_plan: '', views_fact: '', cpv: ''})
             },
             removeResource(index, resource) {
                 this.data.splice(index, 1)
