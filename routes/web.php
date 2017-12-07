@@ -18,8 +18,9 @@ Route::group(['middleware' => 'role:admin'], function () {
 Route::view('/', 'dashboard.index')->middleware('role:user');
 
 Route::get('/test', function () {
-   $report = App\DigitalReport::find(4);
-   return $report;
+   $user = App\User::find(1);
+   $user->notify(new App\Notifications\PostFacebookNotification());
+   return 'done';
 });
 
 
@@ -27,3 +28,4 @@ Route::get('/test', function () {
 
 
 Route::resource('admin/digital-reports', 'Admin\\DigitalReportsController');
+Route::resource('admin/smm-reports', 'Admin\\SmmReportsController');

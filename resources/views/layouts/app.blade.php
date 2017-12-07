@@ -12,6 +12,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .container {
+            width: 90%!important;
+        }
+    </style>
 </head>
 <body>
     <div id="app">

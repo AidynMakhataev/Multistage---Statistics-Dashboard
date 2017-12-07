@@ -37,15 +37,10 @@
 
 <script>
     export default {
+        props: ['parameters'],
         data () {
             return {
-                data: {
-                    gender: {
-                        male: 0,
-                        female: 0
-                    },
-                    ages: []
-                }
+                data: this.parameters
             }
         },
         methods: {

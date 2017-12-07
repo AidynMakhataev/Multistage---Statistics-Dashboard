@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\DigitalReport;
+use App\SmmReport;
 use Illuminate\Http\Request;
 
-class DigitalReportsController extends Controller
+class SmmReportsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,14 +21,14 @@ class DigitalReportsController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $digitalreports = DigitalReport::where('start', 'LIKE', "%$keyword%")
+            $smmreports = SmmReport::where('start', 'LIKE', "%$keyword%")
                 ->orWhere('end', 'LIKE', "%$keyword%")
                 ->paginate($perPage);
         } else {
-            $digitalreports = DigitalReport::paginate($perPage);
+            $smmreports = SmmReport::paginate($perPage);
         }
 
-        return view('admin.digital-reports.index', compact('digitalreports'));
+        return view('admin.smm-reports.index', compact('smmreports'));
     }
 
     /**
@@ -38,7 +38,7 @@ class DigitalReportsController extends Controller
      */
     public function create()
     {
-        return view('admin.digital-reports.create');
+        return view('admin.smm-reports.create');
     }
 
     /**
@@ -50,20 +50,22 @@ class DigitalReportsController extends Controller
      */
     public function store(Request $request)
     {
+
         $country_report = json_decode($request->country_report, true);
-        $actions_overview = json_decode($request->actions_overview, true);
+        $smm_overview = json_decode($request->smm_overview, true);
         $people_overview = json_decode($request->people_overview, true);
 
-        DigitalReport::create([
+        SmmReport::create([
             'project_id' => $request->project_id,
             'start' => $request->start,
             'end' => $request->end,
-            'actions_overview' => $actions_overview,
+            'smm_overview' => $smm_overview,
             'people_overview' => $people_overview,
             'country_report' => $country_report
         ]);
 
-        return redirect('admin/digital-reports')->with('flash_message', 'DigitalReport added!');
+
+        return redirect('admin/smm-reports')->with('flash_message', 'SmmReport added!');
     }
 
     /**
@@ -75,9 +77,9 @@ class DigitalReportsController extends Controller
      */
     public function show($id)
     {
-        $digitalreport = DigitalReport::findOrFail($id);
+        $smmreport = SmmReport::findOrFail($id);
 
-        return view('admin.digital-reports.show', compact('digitalreport'));
+        return view('admin.smm-reports.show', compact('smmreport'));
     }
 
     /**
@@ -89,9 +91,9 @@ class DigitalReportsController extends Controller
      */
     public function edit($id)
     {
-        $digitalreport = DigitalReport::findOrFail($id);
+        $smmreport = SmmReport::findOrFail($id);
 
-        return view('admin.digital-reports.edit', compact('digitalreport'));
+        return view('admin.smm-reports.edit', compact('smmreport'));
     }
 
     /**
@@ -104,25 +106,22 @@ class DigitalReportsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-        $digitalreport = DigitalReport::findOrFail($id);
-
+        $smmreport = SmmReport::findOrFail($id);
 
         $country_report = json_decode($request->country_report, true);
-        $actions_overview = json_decode($request->actions_overview, true);
+        $smm_overview = json_decode($request->smm_overview, true);
         $people_overview = json_decode($request->people_overview, true);
 
-        $digitalreport->update([
+        $smmreport->update([
             'project_id' => $request->project_id,
             'start' => $request->start,
             'end' => $request->end,
-            'actions_overview' => $actions_overview,
+            'actions_overview' => $smm_overview,
             'people_overview' => $people_overview,
             'country_report' => $country_report
         ]);
 
-
-        return redirect('admin/digital-reports')->with('flash_message', 'DigitalReport updated!');
+        return redirect('admin/smm-reports')->with('flash_message', 'SmmReport updated!');
     }
 
     /**
@@ -134,8 +133,8 @@ class DigitalReportsController extends Controller
      */
     public function destroy($id)
     {
-        DigitalReport::destroy($id);
+        SmmReport::destroy($id);
 
-        return redirect('admin/digital-reports')->with('flash_message', 'DigitalReport deleted!');
+        return redirect('admin/smm-reports')->with('flash_message', 'SmmReport deleted!');
     }
 }

@@ -5,15 +5,15 @@
         <div class="row">
             @include('admin.sidebar')
 
-            <div class="col-md-10">
+            <div class="col-md-9">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Digital reports</div>
+                    <div class="panel-heading">Smmreports</div>
                     <div class="panel-body">
-                        <a href="{{ url('/admin/digital-reports/create') }}" class="btn btn-success btn-sm" title="Add New DigitalReport">
+                        <a href="{{ url('/admin/smm-reports/create') }}" class="btn btn-success btn-sm" title="Add New SmmReport">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
 
-                        {!! Form::open(['method' => 'GET', 'url' => '/admin/digital-reports', 'class' => 'navbar-form navbar-right', 'role' => 'search'])  !!}
+                        {!! Form::open(['method' => 'GET', 'url' => '/admin/smm-reports', 'class' => 'navbar-form navbar-right', 'role' => 'search'])  !!}
                         <div class="input-group">
                             <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
                             <span class="input-group-btn">
@@ -34,23 +34,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($digitalreports as $item)
+                                @foreach($smmreports as $item)
                                     <tr>
                                         <td>{{ $loop->iteration or $item->id }}</td>
                                         <td><a href="/admin/projects/{{App\Project::find($item->project_id)->id}}">{{App\Project::find($item->project_id)->name}}</a></td>
                                         <td>{{ $item->start }}</td><td>{{ $item->end }}</td>
                                         <td>
-                                            <a href="{{ url('/admin/digital-reports/' . $item->id) }}" title="View DigitalReport"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/admin/digital-reports/' . $item->id . '/edit') }}" title="Edit DigitalReport"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            <a href="{{ url('/admin/smm-reports/' . $item->id) }}" title="View SmmReport"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                            <a href="{{ url('/admin/smm-reports/' . $item->id . '/edit') }}" title="Edit SmmReport"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                                             {!! Form::open([
                                                 'method'=>'DELETE',
-                                                'url' => ['/admin/digital-reports', $item->id],
+                                                'url' => ['/admin/smm-reports', $item->id],
                                                 'style' => 'display:inline'
                                             ]) !!}
                                                 {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
                                                         'type' => 'submit',
                                                         'class' => 'btn btn-danger btn-xs',
-                                                        'title' => 'Delete DigitalReport',
+                                                        'title' => 'Delete SmmReport',
                                                         'onclick'=>'return confirm("Confirm delete?")'
                                                 )) !!}
                                             {!! Form::close() !!}
@@ -59,7 +59,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div class="pagination-wrapper"> {!! $digitalreports->appends(['search' => Request::get('search')])->render() !!} </div>
+                            <div class="pagination-wrapper"> {!! $smmreports->appends(['search' => Request::get('search')])->render() !!} </div>
                         </div>
 
                     </div>

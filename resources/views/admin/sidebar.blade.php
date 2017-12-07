@@ -7,18 +7,23 @@
         <div class="panel-body">
             <ul class="nav" role="tablist">
                 <li role="presentation">
-                    <a href="{{ url('/admin') }}">
-                        Dashboard
+                    <a href="{{ url('/admin/user') }}">
+                        Users
                     </a>
                 </li>
                 <li role="presentation">
-                    <a href="{{ url('/admin/role') }}">
-                        Role
+                    <a href="{{ url('/admin/projects') }}">
+                        Projects
                     </a>
                 </li>
                 <li role="presentation">
-                    <a href="{{ url('/admin/permission') }}">
-                        Permission
+                    <a href="{{ url('/admin/digital-reports') }}">
+                        Digital reports
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="{{ url('/admin/smm-reports') }}">
+                        SMM reports
                     </a>
                 </li>
             </ul>

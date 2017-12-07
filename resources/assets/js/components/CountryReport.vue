@@ -28,9 +28,10 @@
 
 <script>
     export default {
+        props: ['parameters'],
         data () {
             return {
-                data: []
+                data: this.parameters
             }
         },
         methods: {

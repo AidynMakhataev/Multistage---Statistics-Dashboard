@@ -1095,8 +1095,7 @@ window.Vue = __webpack_require__(36);
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
-Vue.component('example-component', __webpack_require__(39));
+Vue.component('smm-overview', __webpack_require__(39));
 Vue.component('actions-overview', __webpack_require__(42));
 Vue.component('people-overview', __webpack_require__(50));
 Vue.component('country-report', __webpack_require__(53));
@@ -42820,7 +42819,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\ExampleComponent.vue"
+Component.options.__file = "resources\\assets\\js\\components\\SmmOverview.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
 
 /* hot reload */
@@ -42830,9 +42829,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0ca92eac", Component.options)
+    hotAPI.createRecord("data-v-bffc1776", Component.options)
   } else {
-    hotAPI.reload("data-v-0ca92eac", Component.options)
+    hotAPI.reload("data-v-bffc1776", Component.options)
 ' + '  }
   module.hot.dispose(function (data) {
     disposed = true
@@ -42856,10 +42855,122 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    mounted: function mounted() {
-        console.log('Component mounted.');
+    props: ['parameters'],
+    data: function data() {
+        return {
+            data: this.parameters,
+            resources: ['Display', 'Pre-Roll', 'Facebook', 'Instagram', 'Youtube', 'VK', 'Odnoklassniki']
+        };
+    },
+
+    methods: {
+        addResource: function addResource(index, resource) {
+            this.resources.splice(index, 1);
+            this.data.push({ name: resource, tf_plan: '', tf_fact: '', pp_plan: '', pp_fact: '', reactions: 0, comments: 0, shares: 0, cpv: '' });
+        },
+        removeResource: function removeResource(index, resource) {
+            this.data.splice(index, 1);
+            this.resources.push(resource);
+        }
+    },
+    computed: {
+        totalFansPlan: function totalFansPlan() {
+            var total = 0;
+            this.data.forEach(function (item) {
+                total += parseInt(item.tf_plan);
+            });
+            return total;
+        },
+        totalFansFact: function totalFansFact() {
+            var total = 0;
+            this.data.forEach(function (item) {
+                total += parseInt(item.tf_fact);
+            });
+            return total;
+        },
+        pagePostsPlan: function pagePostsPlan() {
+            var total = 0;
+            this.data.forEach(function (item) {
+                total += parseInt(item.pp_plan);
+            });
+            return total;
+        },
+        pagePostsFact: function pagePostsFact() {
+            var total = 0;
+            this.data.forEach(function (item) {
+                total += parseInt(item.pp_fact);
+            });
+            return total;
+        },
+        totalSpend: function totalSpend() {
+            var total = 0;
+            this.data.forEach(function (item) {
+                total += parseInt(item.pp_fact) * parseFloat(item.cpv);
+            });
+            return total;
+        }
     }
 });
 
@@ -42871,14 +42982,391 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0, false, false)
+  return _c("div", { staticClass: "form-group" }, [
+    _vm._m(0, false, false),
+    _vm._v(" "),
+    _c("div", { staticClass: "table-responsive" }, [
+      _c("table", { staticClass: "table" }, [
+        _vm._m(1, false, false),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          [
+            _vm._l(_vm.data, function(resource, index) {
+              return _c("tr", [
+                _c("td", [_vm._v(_vm._s(resource.name))]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: resource.tf_plan,
+                        expression: "resource.tf_plan"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "number" },
+                    domProps: { value: resource.tf_plan },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(resource, "tf_plan", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: resource.tf_fact,
+                        expression: "resource.tf_fact"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "number" },
+                    domProps: { value: resource.tf_fact },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(resource, "tf_fact", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: resource.pp_plan,
+                        expression: "resource.pp_plan"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "number" },
+                    domProps: { value: resource.pp_plan },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(resource, "pp_plan", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: resource.pp_fact,
+                        expression: "resource.pp_fact"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "number" },
+                    domProps: { value: resource.pp_fact },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(resource, "pp_fact", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(
+                    _vm._s(
+                      parseInt(resource.reactions) +
+                        parseInt(resource.comments) +
+                        parseInt(resource.shares)
+                    )
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: resource.reactions,
+                        expression: "resource.reactions"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "number", min: "0" },
+                    domProps: { value: resource.reactions },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(resource, "reactions", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: resource.comments,
+                        expression: "resource.comments"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "number", min: "0" },
+                    domProps: { value: resource.comments },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(resource, "comments", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: resource.shares,
+                        expression: "resource.shares"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "number", min: "0" },
+                    domProps: { value: resource.shares },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(resource, "shares", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(
+                    _vm._s(
+                      Math.round(resource.tf_fact / resource.tf_plan * 10000) /
+                        100
+                    ) + " %"
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: resource.cpv,
+                        expression: "resource.cpv"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "number", step: "0.01", min: "0" },
+                    domProps: { value: resource.cpv },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(resource, "cpv", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(
+                    _vm._s(
+                      Math.round(resource.pp_fact * resource.cpv * 100) / 100
+                    )
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-danger",
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          _vm.removeResource(index, resource.name)
+                        }
+                      }
+                    },
+                    [_vm._v("remove")]
+                  )
+                ])
+              ])
+            }),
+            _vm._v(" "),
+            _vm.data.length > 0
+              ? _c("tr", [
+                  _c("td", [_vm._v("TOTAL")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(_vm.totalFansPlan))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(_vm.totalFansFact))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(_vm.pagePostsPlan))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(_vm.pagePostsFact))]),
+                  _vm._v(" "),
+                  _c("td"),
+                  _vm._v(" "),
+                  _c("td"),
+                  _vm._v(" "),
+                  _c("td"),
+                  _vm._v(" "),
+                  _c("td"),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("SUB")]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(_vm._s(Math.round(_vm.totalSpend * 100) / 100))
+                  ])
+                ])
+              : _vm._e()
+          ],
+          2
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _vm.resources.length > 0
+      ? _c("div", { staticClass: "btn-group" }, [
+          _c(
+            "button",
+            { staticClass: "btn btn-default", attrs: { type: "button" } },
+            [_vm._v("Add Resource")]
+          ),
+          _vm._v(" "),
+          _vm._m(2, false, false),
+          _vm._v(" "),
+          _c(
+            "ul",
+            { staticClass: "dropdown-menu" },
+            _vm._l(_vm.resources, function(resource, index) {
+              return _c("li", [
+                _c(
+                  "a",
+                  {
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        _vm.addResource(index, resource)
+                      }
+                    }
+                  },
+                  [_vm._v(_vm._s(resource))]
+                )
+              ])
+            })
+          )
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _c("input", {
+      attrs: { type: "hidden", name: "smm_overview" },
+      domProps: { value: JSON.stringify(_vm.data) }
+    })
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("div", { staticClass: "form-group" })])
+    return _c("label", [_c("h3", [_vm._v("SMM Overview")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Resources")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Total Fans (plan)")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Total Fans (fact)")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Page Posts (plan)")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Page Posts (Fact)")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Total Interactions")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Reactions")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Comments")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Shares")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Relative Change in Fans Spend")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("CPV")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Total Spend")]),
+        _vm._v(" "),
+        _c("th")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-default dropdown-toggle",
+        attrs: {
+          type: "button",
+          "data-toggle": "dropdown",
+          "aria-haspopup": "true",
+          "aria-expanded": "false"
+        }
+      },
+      [
+        _c("span", { staticClass: "caret" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "sr-only" }, [_vm._v("Toggle Dropdown")])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -42886,7 +43374,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-0ca92eac", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-bffc1776", module.exports)
   }
 }
 
@@ -43387,10 +43875,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['parameters'],
     data: function data() {
         return {
             resources: ['Display', 'Pre-Roll', 'Facebook', 'Instagram', 'Youtube', 'VK', 'Odnoklassniki'],
-            data: []
+            data: this.parameters
         };
     },
 
@@ -43560,7 +44049,7 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(parseInt(resource.views_fact) * 0.08))]),
+              _c("td", [_vm._v(_vm._s(parseInt(resource.views_fact * 0.08)))]),
               _vm._v(" "),
               _c("td", [
                 _vm._v(
@@ -43858,15 +44347,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['parameters'],
     data: function data() {
         return {
-            data: {
-                gender: {
-                    male: 0,
-                    female: 0
-                },
-                ages: []
-            }
+            data: this.parameters
         };
     },
 
@@ -44180,9 +44664,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['parameters'],
     data: function data() {
         return {
-            data: []
+            data: this.parameters
         };
     },
 

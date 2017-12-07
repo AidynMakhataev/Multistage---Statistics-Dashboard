@@ -3,11 +3,13 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            @include('admin.sidebar')
+
+            <div class="col-md-10">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Create New DigitalReport</div>
+                    <div class="panel-heading">Create New SmmReport</div>
                     <div class="panel-body">
-                        <a href="{{ url('/admin/digital-reports') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/admin/smm-reports') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />
                         <br />
 
@@ -19,11 +21,11 @@
                             </ul>
                         @endif
 
-                        {!! Form::open(['url' => '/admin/digital-reports', 'class' => 'form-horizontal', 'files' => true]) !!}
+                        {!! Form::open(['url' => '/admin/smm-reports', 'class' => 'form-horizontal', 'files' => true]) !!}
 
-                        @include ('admin.digital-reports.form')
+                        @include ('admin.smm-reports.form')
 
-                        <actions-overview :parameters="{{ json_encode([])  }}"></actions-overview>
+                        <smm-overview :parameters="{{ json_encode([])  }}"></smm-overview>
                         <people-overview :parameters="{{ json_encode(['gender' => ['male' => 0, 'female' => 0], 'ages' => []])  }}"></people-overview>
                         <country-report :parameters="{{ json_encode([]) }}"></country-report>
 
