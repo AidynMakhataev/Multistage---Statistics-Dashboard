@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class DigitalReport extends Model
 {
-    protected $fillable = ['project_id', 'start', 'end', 'actions_overview', 'people_overview', 'country_report'];
+    protected $fillable = ['project_id', 'start', 'end', 'actions_overview', 'people_overview', 'country_report', 'video_link'];
 
     protected $casts = [
         'actions_overview' => 'array',

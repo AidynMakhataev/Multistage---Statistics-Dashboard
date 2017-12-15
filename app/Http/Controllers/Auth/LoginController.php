@@ -46,7 +46,11 @@ class LoginController extends Controller
             return 'admin/user';
         }
         else if($user->hasRole('user')) {
-            return '/';
+            if($user->can('view-digital-report')) {
+                return 'digital';
+            } else if($user->can('view-smm-report')) {
+                return 'smm';
+            }
         }
         else
             abort(404);

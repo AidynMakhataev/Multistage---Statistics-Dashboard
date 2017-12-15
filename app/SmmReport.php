@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SmmReport extends Model
 {
-    protected $fillable = ['project_id', 'start', 'end', 'smm_overview', 'people_overview', 'country_report'];
+    protected $fillable = ['project_id', 'start', 'end', 'smm_overview', 'people_overview', 'country_report', 'video_link'];
 
     protected $casts = [
         'smm_overview' => 'json',

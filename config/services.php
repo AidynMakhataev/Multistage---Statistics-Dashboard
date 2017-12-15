@@ -33,11 +33,6 @@ return [
         'model' => App\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
-    ],
-    'facebook_poster' => [
-        'app_id' => env('FACEBOOK_APP_ID', '2048856832067964'),
-        'app_secret' => env('FACEBOOK_APP_SECRET', '38d2a9cf68f231469f42a8f1811f93dd'),
-        'access_token' => env('FACEBOOK_ACCESS_TOKEN', 'EAAdHbKeryXwBAIJU3or76mAfUaD47RWSzioSa8c68KidSgzU4Eg984T27oGe3TyYBuuvSBS7cO3PWCNzaS7FZBKDn9easXlnCNjTZCmJMjX7a5tvTfZCVXHNvSDiojYefj0I0ilKl7pVL33sZBQ1et3ARew1x5TtdpCZBLZABsZAwYLRWhXhVILtOBoz8ZAxiAUZD'),
     ]
 
 ];

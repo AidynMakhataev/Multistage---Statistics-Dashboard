@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Project;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -21,9 +22,9 @@ class UserController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $user = User::paginate($perPage);
+            $user = User::role('user')->paginate($perPage);
         } else {
-            $user = User::paginate($perPage);
+            $user = User::role('user')->paginate($perPage);
         }
 
         return view('admin.user.index', compact('user'));
@@ -49,11 +50,10 @@ class UserController extends Controller
     public function store(Request $request)
     {
         
-        $requestData = $request->except('roles');
-        $roles = $request->only('roles');
+        $requestData = $request->all();
         
         $user = User::create($requestData);
-        $user->assignRole($roles);
+        $user->assignRole('user');
 
         return redirect('admin/user')->with('flash_message', 'User added!');
     }
@@ -96,12 +96,14 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-        $requestData = $request->except('roles');
-        
+        $requestData = $request->except('permissions');
         $user = User::findOrFail($id);
         $user->update($requestData);
-        $user->syncRoles($request->only('roles'));
+        if(isset($request->permissions)) {
+            $user->syncPermissions($request->permissions);
+        } else {
+            $user->revokePermissionTo(['view-digital-report', 'view-smm-report']);
+        }
 
         return redirect('admin/user')->with('flash_message', 'User updated!');
     }

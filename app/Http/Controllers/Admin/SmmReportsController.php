@@ -59,6 +59,7 @@ class SmmReportsController extends Controller
             'project_id' => $request->project_id,
             'start' => $request->start,
             'end' => $request->end,
+            'video_link' => $request->video_link,
             'smm_overview' => $smm_overview,
             'people_overview' => $people_overview,
             'country_report' => $country_report
@@ -116,7 +117,8 @@ class SmmReportsController extends Controller
             'project_id' => $request->project_id,
             'start' => $request->start,
             'end' => $request->end,
-            'actions_overview' => $smm_overview,
+            'video_link' => $request->video_link,
+            'smm_overview' => $smm_overview,
             'people_overview' => $people_overview,
             'country_report' => $country_report
         ]);

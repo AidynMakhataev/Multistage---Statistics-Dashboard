@@ -16,14 +16,27 @@
         {!! Form::password('password', ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
         {!! $errors->first('password', '<p class="help-block">:message</p>') !!}
     </div>
-</div><div class="form-group {{ $errors->has('roles') ? 'has-error' : ''}}">
-    {!! Form::label('roles', 'Roles', ['class' => 'col-md-4 control-label']) !!}
+</div>
+<div class="form-group">
+    {!! Form::label('project_id', 'Project', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::select('roles[]', Spatie\Permission\Models\Role::where('name', '!=','super-admin')->pluck('name','name') , isset($user) ? $user->getRoleNames() : null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required', 'multiple'] : ['class' => 'form-control', 'multiple']) !!}
-        {!! $errors->first('roles', '<p class="help-block">:message</p>') !!}
+        @php
+            $aP = App\Project::where('status', 1)->doesntHave('client')->pluck('name', 'id');
+            if(isset($user->project)) {
+                $aP->put($user->project->id, $user->project->name);
+            }
+        @endphp
+        {!! Form::select('project_id', $aP, isset($user) && isset($user->project) ? $user->project->id : null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
     </div>
 </div>
 
+<div class="form-group">
+    {!! Form::label('permissions', 'User access', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::select('permissions[]', ['view-digital-report' => 'view-digital-report', 'view-smm-report' => 'view-smm-report'], isset($user)?$user->permissions->pluck('name','name'):null , ('' == 'required') ? ['class' => 'form-control', 'required' => 'required', 'multiple'=>'multiple'] : ['class' => 'form-control', 'multiple']) !!}
+        {!! $errors->first('permissions', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
 <div class="form-group">
     <div class="col-md-offset-4 col-md-4">
         {!! Form::submit(isset($submitButtonText) ? $submitButtonText : 'Create', ['class' => 'btn btn-primary']) !!}

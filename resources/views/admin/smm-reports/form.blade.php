@@ -18,4 +18,11 @@
         {!! $errors->first('end', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
+<div class="form-group {{ $errors->has('video_link') ? 'has-error' : ''  }}">
+    {!! Form::label('video_link', 'Link to youtube video', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {!! Form::text('video_link', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+        {!! $errors->first('video_link', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
 

@@ -28,7 +28,7 @@
                   <td>{{Math.round((resource.views_fact / resource.pr_fact) * 1000) / 10}}%</td>
                   <td>{{Math.round(((resource.views_fact * 0.08) / resource.pr_fact) * 1000) / 10}}%</td>
                   <td><input type="number" step="0.01" min="0" class="form-control" v-model="resource.cpv"/></td>
-                  <td>{{resource.views_fact * resource.cpv}} тг</td>
+                  <td>{{Math.round((resource.views_fact * resource.cpv) * 100) / 100}} тг</td>
                   <td><a href="#" class="btn btn-danger" @click="removeResource(index, resource.name)">remove</a></td>
               </tr>
               <tr v-if="data.length > 0">
@@ -41,7 +41,7 @@
                   <td></td>
                   <td></td>
                   <td>SUB</td>
-                  <td>{{spendTotal}}</td>
+                  <td>{{Math.round(spendTotal*100)/100}}</td>
               </tr>
               </tbody>
           </table>
@@ -76,6 +76,17 @@
             removeResource(index, resource) {
                 this.data.splice(index, 1)
                 this.resources.push(resource)
+            }
+        },
+        mounted () {
+            if(this.parameters.length > 0) {
+                let self = this
+                self.parameters.forEach(function (item) {
+                    if(self.resources.includes(item.name)) {
+                        let index = self.resources.indexOf(item.name)
+                        self.resources.splice(index, 1)
+                    }
+                })
             }
         },
         computed: {

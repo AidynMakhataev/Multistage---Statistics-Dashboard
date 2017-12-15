@@ -13,6 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    <ul id="test"></ul>
 
                     You are logged in!
                 </div>
@@ -20,4 +21,5 @@
         </div>
     </div>
 </div>
+
 @endsection

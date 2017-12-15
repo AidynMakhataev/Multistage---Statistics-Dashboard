@@ -58,6 +58,7 @@ class DigitalReportsController extends Controller
             'project_id' => $request->project_id,
             'start' => $request->start,
             'end' => $request->end,
+            'video_link' => $request->video_link,
             'actions_overview' => $actions_overview,
             'people_overview' => $people_overview,
             'country_report' => $country_report
@@ -116,6 +117,7 @@ class DigitalReportsController extends Controller
             'project_id' => $request->project_id,
             'start' => $request->start,
             'end' => $request->end,
+            'video_link' => $request->video_link,
             'actions_overview' => $actions_overview,
             'people_overview' => $people_overview,
             'country_report' => $country_report

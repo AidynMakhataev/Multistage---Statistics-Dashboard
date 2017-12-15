@@ -7,7 +7,7 @@
 
             <div class="col-md-9">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Smmreports</div>
+                    <div class="panel-heading">SMM reports</div>
                     <div class="panel-body">
                         <a href="{{ url('/admin/smm-reports/create') }}" class="btn btn-success btn-sm" title="Add New SmmReport">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New

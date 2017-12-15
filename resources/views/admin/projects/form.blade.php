@@ -1,15 +1,16 @@
 <div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}">
-    {!! Form::label('name', 'Название проекта', ['class' => 'col-md-4 control-label']) !!}
+    {!! Form::label('name', 'Project name', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
         {!! Form::text('name', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
         {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
-<div class="form-group {{ $errors->has('user_id') ? 'has-error' : ''}}">
-    {!! Form::label('user_id', 'Клиент', ['class' => 'col-md-4 control-label']) !!}
+
+<div class="form-group">
+    {!! Form::label('status', 'Published status', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::select('user_id', App\User::role('user')->pluck('name', 'id'), old('user_id'), ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
-        {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
+        {!! Form::select('status', ['Unpublished', 'Published'], old('status'), ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+        {!! $errors->first('status', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
 

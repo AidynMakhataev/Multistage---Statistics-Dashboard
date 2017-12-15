@@ -14,7 +14,7 @@ class Project extends Model
 
 
     public function client () {
-        return $this->belongsTo('App\User', 'user_id');
+        return $this->hasOne('App\User', 'project_id');
     }
 
     public function digital_reports()

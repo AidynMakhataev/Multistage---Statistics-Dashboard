@@ -85,6 +85,17 @@
                 this.resources.push(resource)
             }
         },
+        mounted () {
+            if(this.parameters.length > 0) {
+                let self = this
+                self.parameters.forEach(function (item) {
+                    if(self.resources.includes(item.name)) {
+                        let index = self.resources.indexOf(item.name)
+                        self.resources.splice(index, 1)
+                    }
+                })
+            }
+        },
         computed: {
             totalFansPlan () {
                 let total = 0;
