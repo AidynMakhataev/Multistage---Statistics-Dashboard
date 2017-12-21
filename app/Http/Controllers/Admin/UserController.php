@@ -102,7 +102,7 @@ class UserController extends Controller
         if(isset($request->permissions)) {
             $user->syncPermissions($request->permissions);
         } else {
-            $user->revokePermissionTo(['view-digital-report', 'view-smm-report']);
+            $user->syncPermissions([]);
         }
 
         return redirect('admin/user')->with('flash_message', 'User updated!');

@@ -8,6 +8,29 @@ use Illuminate\Support\Facades\Auth;
 
 class FrontendController extends Controller
 {
+
+    public function home ()
+    {
+        if(Auth::check()) {
+            $user = Auth::user();
+            
+            if($user->hasRole('admin')) {
+                return redirect('/admin/user');
+            } else {
+                if($user->can('view-digital-report')) {
+                    return redirect('/digital');
+                } else if($user->can('view-smm-report')) {
+                    return redirect('/smm');
+                } else {
+                    Auth::logout();
+                    abort(404);
+                }
+            }
+        } else {
+            return redirect('/login');
+        }
+    }
+
     public function digital ()
     {
         $user = Auth::user();

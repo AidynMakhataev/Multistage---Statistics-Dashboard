@@ -26,6 +26,11 @@
                         SMM reports
                     </a>
                 </li>
+                <li role="presentation">
+                    <a href="{{ url('/admin/comments') }}">
+                        Comments
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
