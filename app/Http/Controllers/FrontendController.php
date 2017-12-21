@@ -46,7 +46,7 @@ class FrontendController extends Controller
 
         $project = $user->project;
 
-        $report = $project->smm_reports()->orderBy('id','DESC')->first();
+        $report = $project->smm_reports()->orderBy('id','DESC')->firstOrFail();
         $reportPeriods = $project->smm_reports()->where('id','!=',$report->id)->select('id','start', 'end')->get();
 
         $smmOverview = collect($report->smm_overview);

@@ -219,6 +219,7 @@
         @isset($report->video_link)
             @include('dashboard.video')
         @endisset
+        @include('dashboard.social')
     </div>
 
 @endsection

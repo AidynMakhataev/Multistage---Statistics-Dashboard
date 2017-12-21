@@ -26,7 +26,14 @@ Route::middleware('role:user')->group(function () {
     Route::get('/smm/period/{id}','FrontendController@getSmmPeriod')->name('smmPeriod')->middleware('permission:view-smm-report');
 });
 
+Route::get('/test', function () {
+    $project = App\Project::find(1);
+    return $project->instagram;
+});
 
 
 
 
+
+
+Route::resource('admin/comments', 'Admin\\CommentsController');

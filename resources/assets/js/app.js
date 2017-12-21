@@ -68,6 +68,7 @@ Vue.component('smm-overview', require('./components/SmmOverview.vue'));
 Vue.component('actions-overview', require('./components/ActionsOverview.vue'));
 Vue.component('people-overview', require('./components/PeopleOverview.vue'));
 Vue.component('country-report', require('./components/CountryReport.vue'));
+Vue.component('comments', require('./components/Comments.vue'));
 
 const app = new Vue({
     el: '#app',

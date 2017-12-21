@@ -12,7 +12,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(country, index) in data">
+                    <tr v-for="(country, index) in data" :key="index">
                         <td><input type="text" class="form-control" v-model="country.country"></td>
                         <td><input type="number" min="0" class="form-control" v-model="country.local_views"></td>
                         <td><input type="number" min="0" max="100" class="form-control" v-model="country.fans_base"></td>

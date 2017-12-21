@@ -26,4 +26,26 @@ class Project extends Model
     {
         return $this->hasMany('App\SmmReport', 'project_id');
     }
+
+    public function instagram()
+    {
+        return $this->hasOne('App\Comment', 'project_id')->where('type', 'instagram');
+    }
+
+    public function facebook()
+    {
+        return $this->hasOne('App\Comment', 'project_id')->where('type', 'facebook');
+    }
+
+    public function youtube()
+    {
+        return $this->hasOne('App\Comment', 'project_id')->where('type', 'youtube');
+    }
+
+    public function vk()
+    {
+        return $this->hasOne('App\Comment', 'project_id')->where('type', 'vk');
+    }
+
+    
 }
